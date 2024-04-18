@@ -29,9 +29,12 @@ class Seat:
     """
 
     def __init__(self, column: int, row: int) -> None:
+        # Initialize the seat with the given column and row
         self.column = column
         self.row = row
         seat_number = self.get_seat_number()
+
+        # Set the status of the seat based on the seat number
         if seat_number == "X":
             self.status = SeatStatus.ISLES
         elif seat_number == "S":
@@ -49,12 +52,27 @@ class Seat:
         Returns:
             str: The seat number.
         """
+
+        # Define the seat letters for the columns
         seats_letters = ["F", "E", "D", "X", "C", "B", "A"]
         current_seat_letter = seats_letters[self.column]
 
+        # Check if the seat is an aisle seat or a storage seat
         if current_seat_letter == "X":
             return "X"
         elif self.row in [77, 78] and current_seat_letter in ["F", "E", "D"]:
             return "S"
         else:
             return f"{self.row}{seats_letters[self.column]}"
+        
+    def seat_to_dict(self) -> dict:
+        """
+        Converts the seat object to a dictionary containing the row and columns numbers.
+
+        Returns:
+            dict: A dictionary representation of the seat object.
+        """
+        return {
+            "column": self.column,
+            "row": self.row,
+        }

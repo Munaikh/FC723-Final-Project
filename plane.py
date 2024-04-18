@@ -8,7 +8,6 @@ class Plane:
     Attributes:
         seats (list): A 2D list representing the seat map of the plane.
 
-
     Methods:
         create_seat_map() -- Creates a seat map for the plane
         print_seat_map() -- Prints the seat map of the plane
@@ -25,6 +24,8 @@ class Plane:
             list: A 2D list representing the seat map.
         """
         seat_map = []
+
+        # Create a 2D list of seats, 80 rows and 7 columns
         for row in range(1, 81):
             row_chairs = []
             for column in range(7):
